@@ -26,6 +26,24 @@ module.exports.getAllMovies = function (callback) {
         })
 };
 
+module.exports.getMovie = function(movieId, callback) {
+    const movieKey = datastore.key(['Movie', movieId]);
+    const query = datastore.createQuery('Movie').filter('__key__', movieKey);
+
+
+    datastore
+        .runQuery(query)
+        .then(results => {
+            const movie = results[0];
+            callback(null, 'Success');
+            return movie;
+        })
+        .catch(error => {
+            console.log('Error:', error);
+            callback(error, 'Error');
+        })
+};
+
 module.exports.addMove = function (title, year, rating, genre, hour, min, description, callback) {
     const kind = 'Movie';
     const key = datastore.key([kind]);
