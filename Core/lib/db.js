@@ -9,8 +9,21 @@ const datastore = new Datastore({
 });
 
 
-module.exports.getAllMovies = function () {
-    //Todo getAllMove
+module.exports.getAllMovies = function (callback) {
+    const query = datastore.createQuery('Movie').order('title');
+
+    datastore
+        .runQuery(query)
+        .then(results => {
+            const movies = results[0];
+            callback(null, 'Success');
+
+            return movies;
+        })
+        .catch(error => {
+            console.log('Error:', error);
+            callback(error, 'Error');
+        })
 };
 
 module.exports.addMove = function (title, year, rating, genre, hour, min, description, callback) {
