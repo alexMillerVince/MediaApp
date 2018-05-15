@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const db = require('../lib/db');
+const moviedb = require('../lib/moviedb');
 
 describe('Test', function () {
    describe('#firstTest', function () {
@@ -31,4 +32,19 @@ describe('Database', function () {
             db.getMovie(5649050225344512, done);
         });
     });
+});
+
+
+describe('MovieDB', function () {
+    describe('#getPopular()', function () {
+        it('should return the popular movies without any error', function (done) {
+            moviedb.getPopular(done);
+        });
+    });
+
+    describe('#findMovie()', function () {
+        it('should return the specific movie data without any error', function (done) {
+            moviedb.findMovie('Logan', 2017, done);
+        });
+    })
 });
