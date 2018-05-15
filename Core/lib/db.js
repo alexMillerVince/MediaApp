@@ -13,7 +13,7 @@ module.exports.getAllMovies = function () {
     //Todo getAllMove
 };
 
-module.exports.addMove = function (title, year) {
+module.exports.addMove = function (title, year, callback) {
     const kind = 'Movie';
     const key = datastore.key([kind]);
     const data = {
@@ -23,12 +23,15 @@ module.exports.addMove = function (title, year) {
             year: year,
         }
     };
+
     datastore
         .save(data)
         .then(() => {
             console.log(`Saved ${data.key}: ${data.data.title}`);
+            callback(null, 'Success');
         })
         .catch(error => {
             console.error('Error:', error);
+            callback(error, 'Error');
         });
 };
