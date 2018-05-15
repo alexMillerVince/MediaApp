@@ -12,9 +12,17 @@ describe('Test', function () {
 });
 
 describe('Database', function () {
+    /*
     describe('#addMovie()', function () {
         it('should save to databse without any error', function (done) {
-            db.addMove('Test', 2019, 7, 'Action', 1, 30, 'Description', done);
+            db.addMove('Test_2', 2018, 8, 'Adventure', 2, 16, 'Description', done);
+        });
+    });
+    */
+
+    describe('#getAllMovies()', function () {
+        it('should return all movies without any error', function (data) {
+            db.getAllMovies(data);
         });
     })
 });
