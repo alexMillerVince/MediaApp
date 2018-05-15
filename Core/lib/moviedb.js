@@ -45,9 +45,8 @@ module.exports.findMovie = function (title, year, callback) {
             throw new Error(error);
         }
 
-        const movie = JSON.parse(body);
+        const movie = JSON.parse(body).results[0];
         callback(null, 'Success');
-        console.log(movie.results[0]);
         return movie;
     });
 };
