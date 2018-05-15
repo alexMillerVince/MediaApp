@@ -21,8 +21,14 @@ describe('Database', function () {
     */
 
     describe('#getAllMovies()', function () {
-        it('should return all movies without any error', function (data) {
-            db.getAllMovies(data);
+        it('should return all movies without any error', function (done) {
+            db.getAllMovies(done);
         });
-    })
+    });
+
+    describe('#getMovie()', function () {
+        it('should return the specific movie based on the id without any error', function (done) {
+            db.getMovie(5649050225344512, done);
+        });
+    });
 });
