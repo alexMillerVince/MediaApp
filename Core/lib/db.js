@@ -16,9 +16,7 @@ module.exports.getAllMovies = function (callback) {
         .runQuery(query)
         .then(results => {
             const movies = results[0];
-            callback(null, 'Success');
-
-            return movies;
+            callback(movies, 'Success');
         })
         .catch(error => {
             console.log('Error:', error);
@@ -35,8 +33,7 @@ module.exports.getMovie = function(movieId, callback) {
         .runQuery(query)
         .then(results => {
             const movie = results[0];
-            callback(null, 'Success');
-            return movie;
+            callback(movie, 'Success');
         })
         .catch(error => {
             console.log('Error:', error);
@@ -69,4 +66,20 @@ module.exports.addMove = function (title, year, rating, genre, hour, min, descri
             console.error('Error:', error);
             callback(error, 'Error');
         });
+};
+
+module.exports.getMoviesToDownload = function (callback) {
+    const query = datastore.createQuery('Download').filter('done', '=', false);
+
+    datastore
+        .runQuery(query)
+        .then(results => {
+            const movies = results[0];
+            callback(movies, 'Success');
+
+        })
+        .catch(error => {
+            console.log('Error:', error);
+            callback(error, 'Error');
+        })
 };
