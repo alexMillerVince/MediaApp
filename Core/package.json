@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/datastore": "^1.4.0",
+    "jquery": "^2.2.0",
+    "jsdom": "^8.0.4",
     "request": "^2.85.0"
   },
   "devDependencies": {
