@@ -32,6 +32,12 @@ describe('Database', function () {
             db.getMovie(5649050225344512, done);
         });
     });
+
+    describe('#getMoviesToDownload()', function () {
+        it('should return all movies without any error', function (done) {
+            db.getMoviesToDownload(done);
+        });
+    });
 });
 
 
@@ -46,5 +52,5 @@ describe('MovieDB', function () {
         it('should return the specific movie data without any error', function (done) {
             moviedb.findMovie('Logan', 2017, done);
         });
-    })
+    });
 });
