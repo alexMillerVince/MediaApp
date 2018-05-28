@@ -3,7 +3,7 @@
 const request = require('request');
 
 
-module.exports.getPopular = function (callback) {
+module.exports.getPopular = (callback) => {
     const options = { method: 'GET',
         url: 'https://api.themoviedb.org/3/movie/popular',
         qs: {
@@ -14,7 +14,7 @@ module.exports.getPopular = function (callback) {
         body: '{}' };
 
 
-    request(options, function (error, response, body) {
+    request(options, (error, response, body) => {
         if (error) {
             callback(error, 'Error');
             throw new Error(error);
@@ -26,7 +26,7 @@ module.exports.getPopular = function (callback) {
     });
 };
 
-module.exports.findMovie = function (title, year, callback) {
+module.exports.findMovie = (title, year, callback) => {
     const options = { method: 'GET',
         url: 'https://api.themoviedb.org/3/search/movie',
         qs: {
@@ -39,7 +39,7 @@ module.exports.findMovie = function (title, year, callback) {
         },
         body: '{}' };
 
-    request(options, function (error, response, body) {
+    request(options, (error, response, body) => {
         if (error) {
             callback(error, 'Error');
             throw new Error(error);
