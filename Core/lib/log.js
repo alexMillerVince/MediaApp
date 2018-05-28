@@ -3,7 +3,7 @@
 const console_log = true;
 const fs = require('fs');
 
-const log = function (input) {
+const log = (input) => {
     const date = new Date();
     if (input === '') {
         input = '### END ###';
