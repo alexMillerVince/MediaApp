@@ -9,7 +9,7 @@ const datastore = new Datastore({
 });
 
 
-module.exports.getAllMovies = function (callback) {
+module.exports.getAllMovies = (callback) => {
     const query = datastore.createQuery('Movie').order('title');
 
     datastore
@@ -24,7 +24,7 @@ module.exports.getAllMovies = function (callback) {
         })
 };
 
-module.exports.getMovie = function(movieId, callback) {
+module.exports.getMovie = (movieId, callback) => {
     const movieKey = datastore.key(['Movie', movieId]);
     const query = datastore.createQuery('Movie').filter('__key__', movieKey);
 
@@ -41,7 +41,7 @@ module.exports.getMovie = function(movieId, callback) {
         })
 };
 
-module.exports.addMove = function (title, year, rating, genre, hour, min, description, callback) {
+module.exports.addMove = (title, year, rating, genre, hour, min, description, callback) => {
     const kind = 'Movie';
     const key = datastore.key([kind]);
     const data = {
@@ -68,7 +68,7 @@ module.exports.addMove = function (title, year, rating, genre, hour, min, descri
         });
 };
 
-module.exports.getMoviesToDownload = function (callback) {
+module.exports.getMoviesToDownload = (callback) => {
     const query = datastore.createQuery('Download').filter('done', '=', false);
 
     datastore
